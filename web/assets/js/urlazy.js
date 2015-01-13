@@ -5,7 +5,7 @@ function updateBookmarklets(){
     [].forEach.call(environments, function(environment) {
         chunks.push(environment.querySelector('.url-chunk').value.replace('/', '\\/'));
     });
-console.log(chunks);
+
     [].forEach.call(environments, function(environment) {
         updateBookmarklet(environment, chunks);
     });
@@ -22,7 +22,7 @@ function updateBookmarklet(environment, chunks){
         +environment.querySelector('.url-chunk').value
         +"'))})();"
     ;
-    bookmarklet.innerHTML = environment.querySelector('.button-name').value;
+    bookmarklet.innerHTML = environment.querySelector('.button-name').value || '?';
 }
 
 (function(){
