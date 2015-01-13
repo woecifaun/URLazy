@@ -1,24 +1,133 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8"> 
         <title>U R Lazy</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700,900|Roboto+Condensed:400,300,700|Inconsolata:400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="web/assets/css/style.css">
+        <!--[if lt IE 9]>
+        <script src="assets/js/vendors/html5shiv.js"></script>
+        <![endif]-->
+        <style>
+            html, body {
+                min-heiht: 100%;
+            }
+            header#header {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            header#header span {
+                text-transform: lowercase;
+            }
+            .w100 {
+                display: inline-block;
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
-        <p class="environment">
-            <input type="text" class="url-chunk" value="dev/app_dev.php" placeholder="URL chunk to replace" />
-            <input type="text" class="button-name" value="dev" placeholder="Bookmark name" />
-            <a href="euinest" class="bookmarklet">Some name</a>
-        </p>
-        <p class="environment">
-            <input type="text" class="url-chunk" value="net" placeholder="URL chunk to replace" />
-            <input type="text" class="button-name" value="demo" placeholder="Bookmark name" />
-            <a href="euinest" class="bookmarklet">Some name</a>
-        </p>
-        <p class="environment">
-            <input type="text" class="url-chunk" value="com" placeholder="URL chunk to replace" />
-            <input type="text" class="button-name" value="prod" placeholder="Bookmark name" />
-            <a href="euinest" class="bookmarklet">Some name</a>
-        </p>
-        <script src="assets/js/main.js" type="text/javascript"></script>
+        <header id="header">U R L<span>azy…</span></header>
+        <div class="container">
+            <div class="row">
+                <h3 class="col-md-12">Easy bookmarklet generator to switch between different environments of the same project.</h3>
+            </div>
+
+            <div class="row">
+                <h4 class="col-md-5 text-center">
+                    URL section to replace
+                </h4>
+                <h4 class="col-md-5 text-center">
+                    Bookmarklet name in your toolbar
+                </h4>
+                <h4 class="col-md-2 text-center">
+                    Bookmarklet
+                </h4>
+            </div>
+            <div class="environment row">
+                <div class="col-md-5">
+                    <input type="text" class="url-chunk form-control" value="dev/app_dev.php" placeholder="URL chunk to replace" />
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="button-name form-control" value="dev" placeholder="Bookmark name" />
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="bookmarklet btn btn-primary w100"></a>
+                </div>
+            </div>
+            <div class="environment row">
+                <div class="col-md-5">
+                    <input type="text" class="url-chunk form-control" value="net" placeholder="URL chunk to replace" />
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="button-name form-control" value="demo" placeholder="Bookmark name" />
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="bookmarklet btn btn-primary w100"></a>
+                </div>
+            </div>
+            <div class="environment row">
+                <div class="col-md-5">
+                    <input type="text" class="url-chunk form-control" value="com" placeholder="URL chunk to replace" />
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="button-name form-control" value="prod" placeholder="Bookmark name" />
+                </div>
+                <div class="col-md-2">
+                    <a href="#" class="bookmarklet btn btn-primary w100"></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>How to</h4>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="label label-danger">1</span>
+                        </div>
+                        <div class="col-md-11">
+                            Fill all the sections for every environment you want to handle.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="label label-danger">2</span>
+                        </div>
+                        <div class="col-md-11">
+                            Drag one or many buttons to your personal bookmark.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span class="label label-danger">3</span>
+                        </div>
+                        <div class="col-md-11">
+                            Once on your dev page, click the prod bookmark to change the location of page to prod, keeping same path and query.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-justify">
+                    <h4>Use case</h4>
+                    <p>When working on an app having different environments like prod, demo, dev and so on… you constantly change part of the URL in order to compare the behaviors on different environments. This generator aims to improve your workflow by building bookmarklets you can place in the personal toolbar of your browser.</p>
+                    <p><span class="bold">Note:</span> You need to fill a line for every environment you want to replace by another one.</p>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="http://jeremyfagis.github.io/ElaoStrap/web/index.html" class="line-hover">Styled with elaostrap</a>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="https://github.com/woecifaun/URLazy" class="line-hover">
+                            <span class="icon-github"></span> GitHub repository
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+        <script src="web/assets/js/main.js"></script>
+        <script src="web/assets/js/urlazy.js" type="text/javascript"></script>
     </body>
 </html>

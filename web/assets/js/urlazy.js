@@ -31,6 +31,6 @@ function updateBookmarklet(environment, chunks){
     var inputs = document.querySelectorAll('.url-chunk, .button-name');
 
     [].forEach.call(inputs, function(input) {
-        input.onchange = updateBookmarklets;
+        input.onkeyup = updateBookmarklets;
     });
 })();
