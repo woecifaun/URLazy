@@ -2,22 +2,27 @@
 <html>
     <head>
         <meta charset="UTF-8"> 
-        <title>U R Lazy</title>
+        <title>U R Lazy…</title>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700,900|Roboto+Condensed:400,300,700|Inconsolata:400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="web/assets/css/style.css">
         <!--[if lt IE 9]>
         <script src="assets/js/vendors/html5shiv.js"></script>
         <![endif]-->
         <style>
-            html, body {
-                min-heiht: 100%;
-            }
             header#header {
                 padding-top: 30px;
                 padding-bottom: 30px;
             }
             header#header span {
                 text-transform: lowercase;
+            }
+            header#header sup.label {
+                text-transform: lowercase;
+                letter-spacing: 0.1em;
+                top: -2em;
+                left: -1em;
+                color: #f34141;
+                background-color: #ffffff;
             }
             .w100 {
                 display: inline-block;
@@ -26,7 +31,7 @@
         </style>
     </head>
     <body>
-        <header id="header">U R L<span>azy…</span></header>
+        <header id="header"><sup class="label label-primary">beta</sup>U R L<span>azy…</span></header>
         <div class="container">
             <div class="row">
                 <h3 class="col-md-12">Easy bookmarklet generator to switch between different environments of the same project.</h3>
