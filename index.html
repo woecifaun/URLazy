@@ -24,9 +24,12 @@
                 color: #f34141;
                 background-color: #ffffff;
             }
-            .w100 {
-                display: inline-block;
-                width: 100%;
+            h3 {
+                text-transform: none;
+                letter-spacing: 0.05em;
+            }
+            .pb15 {
+                padding-bottom: 15px;
             }
         </style>
     </head>
@@ -38,36 +41,36 @@
             </div>
 
             <div class="row">
-                <h4 class="col-md-5 text-center">
+                <h4 class="col-md-5 text-center no-pb">
                     URL section to replace
                 </h4>
-                <h4 class="col-md-5 text-center">
+                <h4 class="col-md-5 text-center no-pb">
                     Bookmarklet name in your toolbar
                 </h4>
-                <h4 class="col-md-2 text-center">
+                <h4 class="col-md-2 text-center no-pb">
                     Bookmarklet
                 </h4>
             </div>
             <div class="environment row">
-                <div class="col-md-5">
+                <div class="col-md-5 pb15">
                     <input type="text" class="url-chunk form-control" value="dev/app_dev.php" placeholder="URL chunk to replace" />
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 pb15">
                     <input type="text" class="button-name form-control" value="dev" placeholder="Bookmark name" />
                 </div>
-                <div class="col-md-2">
-                    <a href="#" class="bookmarklet btn btn-primary w100"></a>
+                <div class="col-md-2 pb15">
+                    <a href="#" class="bookmarklet btn btn-primary btn-block"></a>
                 </div>
             </div>
             <div class="environment row">
-                <div class="col-md-5">
+                <div class="col-md-5 pb15">
                     <input type="text" class="url-chunk form-control" value="net" placeholder="URL chunk to replace" />
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 pb15">
                     <input type="text" class="button-name form-control" value="demo" placeholder="Bookmark name" />
                 </div>
-                <div class="col-md-2">
-                    <a href="#" class="bookmarklet btn btn-primary w100"></a>
+                <div class="col-md-2 pb15">
+                    <a href="#" class="bookmarklet btn btn-primary btn-block"></a>
                 </div>
             </div>
             <div class="environment row">
@@ -78,7 +81,7 @@
                     <input type="text" class="button-name form-control" value="prod" placeholder="Bookmark name" />
                 </div>
                 <div class="col-md-2">
-                    <a href="#" class="bookmarklet btn btn-primary w100"></a>
+                    <a href="#" class="bookmarklet btn btn-primary btn-block"></a>
                 </div>
             </div>
 
@@ -86,26 +89,26 @@
                 <div class="col-md-6">
                     <h4>How to</h4>
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 pb15">
                             <span class="label label-danger">1</span>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11 pb15">
                             Fill all the sections for every environment you want to handle.
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 pb15">
                             <span class="label label-danger">2</span>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11 pb15">
                             Drag one or many buttons to your personal bookmark.
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 pb15">
                             <span class="label label-danger">3</span>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11 pb15">
                             Once on your dev page, click the prod bookmark to change the location of page to prod, keeping same path and query.
                         </div>
                     </div>
@@ -120,10 +123,10 @@
         <footer id="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 no-pb">
                         <a href="http://jeremyfagis.github.io/ElaoStrap/web/index.html" class="line-hover">Styled with elaostrap</a>
                     </div>
-                    <div class="col-md-6 text-right">
+                    <div class="col-md-6 text-right no-pb">
                         <a href="https://github.com/woecifaun/URLazy" class="line-hover">
                             <span class="icon-github"></span> GitHub repository
                         </a>
