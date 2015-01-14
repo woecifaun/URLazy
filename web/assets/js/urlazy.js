@@ -1,25 +1,27 @@
 var environments = document.querySelectorAll('.environment');
 
 function updateBookmarklets(){
-    var chunks = [];
+    var slices = [];
     [].forEach.call(environments, function(environment) {
-        chunks.push(environment.querySelector('.url-chunk').value.replace('/', '\\/'));
+        var slice = environment.querySelector('.url-slice').value.replace('/', '\\/');
+        if (slice) slices.push(slice);
     });
 
     [].forEach.call(environments, function(environment) {
-        updateBookmarklet(environment, chunks);
+        updateBookmarklet(environment, slices);
     });
 
 }
 
-function updateBookmarklet(environment, chunks){
+function updateBookmarklet(environment, slices){
     var bookmarklet = environment.querySelector('.bookmarklet');
-    bookmarklet.href = 
+
+    bookmarklet.href =
         "javascript:"
         +"(function(){location.assign(document.URL.replace(/"
-        +chunks.join("|")
+        +slices.join("|")
         +"/,'"
-        +environment.querySelector('.url-chunk').value
+        +environment.querySelector('.url-slice').value
         +"'))})();"
     ;
     bookmarklet.innerHTML = environment.querySelector('.button-name').value || '?';
@@ -28,7 +30,7 @@ function updateBookmarklet(environment, chunks){
 (function(){
     updateBookmarklets();
 
-    var inputs = document.querySelectorAll('.url-chunk, .button-name');
+    var inputs = document.querySelectorAll('.url-slice, .button-name');
 
     [].forEach.call(inputs, function(input) {
         input.onkeyup = updateBookmarklets;
