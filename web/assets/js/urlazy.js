@@ -1,6 +1,15 @@
-var environments = document.querySelectorAll('.environment');
+var environments;
+var rawEnv;
 
+function addEnvironment() {
+    var newEnv = rawEnv.cloneNode(true);
+    newEnv.querySelector('.url-slice').onkeyup = updateBookmarklets;
+    newEnv.querySelector('.button-name').onkeyup = updateBookmarklets;
+    document.getElementById('env-container').appendChild(newEnv);
+    updateBookmarklets();
+}
 function updateBookmarklets(){
+    environments = document.querySelectorAll('.environment');
     var slices = [];
     [].forEach.call(environments, function(environment) {
         var slice = environment.querySelector('.url-slice').value.replace('/', '\\/');
@@ -32,7 +41,12 @@ function updateBookmarklet(environment, slices){
 
     var inputs = document.querySelectorAll('.url-slice, .button-name');
 
+    rawEnv = document.querySelector('#raw-env').cloneNode(true);
+    rawEnv.removeAttribute('id');
+
     [].forEach.call(inputs, function(input) {
         input.onkeyup = updateBookmarklets;
     });
+
+    document.querySelector('#env-creator').onclick = addEnvironment;
 })();
