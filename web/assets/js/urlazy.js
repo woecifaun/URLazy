@@ -5,9 +5,21 @@ function addEnvironment() {
     var newEnv = rawEnv.cloneNode(true);
     newEnv.querySelector('.url-slice').onkeyup = updateBookmarklets;
     newEnv.querySelector('.button-name').onkeyup = updateBookmarklets;
+    newEnv.querySelector('.env-remover').onclick = (function(){
+        var thisEnv = newEnv;
+        return function(){
+            removeEnvironment(thisEnv);
+        }
+    })();
     document.getElementById('env-container').appendChild(newEnv);
+
     updateBookmarklets();
 }
+
+function removeEnvironment(env) {
+    document.getElementById('env-container').removeChild(env);
+}
+
 function updateBookmarklets(){
     environments = document.querySelectorAll('.environment');
     var slices = [];
