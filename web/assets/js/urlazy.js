@@ -1,9 +1,19 @@
 var environments;
 var rawEnv;
+var defaultEnvironments = [
+    ['dev/app_dev.php', 'dev'],
+    ['org', 'demo'],
+    ['com', 'prod']
+];
 
-function addEnvironment() {
+function addEnvironment(slice, buttonName) {
+    slice = (typeof slice === "undefined") ? '' : slice;
+    buttonName = (typeof buttonName === "undefined") ? '' : buttonName;
+
     var newEnv = rawEnv.cloneNode(true);
+    newEnv.querySelector('.url-slice').value = slice;
     newEnv.querySelector('.url-slice').onkeyup = updateBookmarklets;
+    newEnv.querySelector('.button-name').value = buttonName;
     newEnv.querySelector('.button-name').onkeyup = updateBookmarklets;
     newEnv.querySelector('.env-remover').onclick = (function(){
         var thisEnv = newEnv;
@@ -18,6 +28,8 @@ function addEnvironment() {
 
 function removeEnvironment(env) {
     document.getElementById('env-container').removeChild(env);
+
+    updateBookmarklets();
 }
 
 function updateBookmarklets(){
@@ -49,16 +61,14 @@ function updateBookmarklet(environment, slices){
 }
 
 (function(){
-    updateBookmarklets();
-
-    var inputs = document.querySelectorAll('.url-slice, .button-name');
-
     rawEnv = document.querySelector('#raw-env').cloneNode(true);
     rawEnv.removeAttribute('id');
 
-    [].forEach.call(inputs, function(input) {
-        input.onkeyup = updateBookmarklets;
-    });
+    for (var i = 0; i < defaultEnvironments.length; i++) {
+        addEnvironment(defaultEnvironments[i][0], defaultEnvironments[i][1]);
+    }
 
-    document.querySelector('#env-creator').onclick = addEnvironment;
+    document.querySelector('#env-creator').onclick = function(){
+        addEnvironment();
+    }
 })();
