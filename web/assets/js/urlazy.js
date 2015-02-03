@@ -64,8 +64,14 @@ function updateBookmarklet(environment, slices){
     rawEnv = document.querySelector('#raw-env').cloneNode(true);
     rawEnv.removeAttribute('id');
 
-    for (var i = 0; i < defaultEnvironments.length; i++) {
-        addEnvironment(defaultEnvironments[i][0], defaultEnvironments[i][1]);
+    try {
+        initEnvs = JSON.parse(decodeURI(window.location.search.substring(1)));
+    } catch (variable) {
+        initEnvs = defaultEnvironments;
+    }
+
+    for (var i = 0; i < initEnvs.length; i++) {
+        addEnvironment(initEnvs[i][0], initEnvs[i][1]);
     }
 
     document.querySelector('#env-creator').onclick = function(){
