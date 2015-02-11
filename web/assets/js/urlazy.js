@@ -1,26 +1,34 @@
-var environments;
 var rawEnv;
 var defaultEnvironments = [
     ['dev/app_dev.php', 'dev'],
     ['org', 'demo'],
     ['com', 'prod']
 ];
+var URLTimer;
+
 
 function addEnvironment(slice, buttonName) {
     slice = (typeof slice === "undefined") ? '' : slice;
     buttonName = (typeof buttonName === "undefined") ? '' : buttonName;
 
     var newEnv = rawEnv.cloneNode(true);
-    newEnv.querySelector('.url-slice').value = slice;
-    newEnv.querySelector('.url-slice').onkeyup = updateBookmarklets;
-    newEnv.querySelector('.button-name').value = buttonName;
-    newEnv.querySelector('.button-name').onkeyup = updateBookmarklets;
+    newEnv.className += ' environment';
+
+    newEnv.slice = newEnv.querySelector('.url-slice');
+    newEnv.slice.value = slice;
+    newEnv.slice.onkeyup = updateBookmarklets;
+
+    newEnv.btnName = newEnv.querySelector('.button-name');
+    newEnv.btnName.value = buttonName;
+    newEnv.btnName.onkeyup = updateBookmarklets;
+
     newEnv.querySelector('.env-remover').onclick = (function(){
         var thisEnv = newEnv;
         return function(){
             removeEnvironment(thisEnv);
         }
     })();
+
     document.getElementById('env-container').appendChild(newEnv);
 
     updateBookmarklets();
@@ -33,17 +41,22 @@ function removeEnvironment(env) {
 }
 
 function updateBookmarklets(){
-    environments = document.querySelectorAll('.environment');
+    var envNodes = document.querySelectorAll('.environment');
+    var environments = [];
     var slices = [];
-    [].forEach.call(environments, function(environment) {
-        var slice = environment.querySelector('.url-slice').value.replace('/', '\\/');
+
+    [].forEach.call(envNodes, function(environment) {
+        var slice = environment.slice.value.replace('/', '\\/');
+
         if (slice) slices.push(slice);
+        environments.push([environment.slice.value, environment.btnName.value]);
     });
 
-    [].forEach.call(environments, function(environment) {
+    [].forEach.call(envNodes, function(environment) {
         updateBookmarklet(environment, slices);
     });
 
+    history.replaceState({}, '', '?' + JSON.stringify(environments));
 }
 
 function updateBookmarklet(environment, slices){
@@ -70,9 +83,9 @@ function updateBookmarklet(environment, slices){
         initEnvs = defaultEnvironments;
     }
 
-    for (var i = 0; i < initEnvs.length; i++) {
-        addEnvironment(initEnvs[i][0], initEnvs[i][1]);
-    }
+    [].forEach.call(initEnvs, function(env){
+        addEnvironment(env[0], env[1]);
+    });
 
     document.querySelector('#env-creator').onclick = function(){
         addEnvironment();

@@ -13,6 +13,9 @@
                 padding-top: 30px;
                 padding-bottom: 30px;
             }
+            header#header a {
+                color: white;
+            }
             header#header span {
                 text-transform: lowercase;
             }
@@ -37,7 +40,9 @@
         </style>
     </head>
     <body>
-        <header id="header"><sup class="label label-primary">beta</sup>U R L<span>azy…</span></header>
+        <header id="header">
+            <a href="/"><sup class="label label-primary">beta</sup>U R L<span>azy…</span></a>
+        </header>
         <div class="container">
             <div class="row">
                 <h3 class="col-md-12">Easy bookmarklet generator to switch between different environments of the same project.</h3>
@@ -119,7 +124,7 @@
                 </div>
             </div>
         </footer>
-        <div class="environment row" id="raw-env">
+        <div class="row" id="raw-env">
             <div class="col-md-1 env-remover">
                 <button class="btn btn-sm btn-ghost btn-danger"><span class="icon-remove"></span></button>
             </div>
